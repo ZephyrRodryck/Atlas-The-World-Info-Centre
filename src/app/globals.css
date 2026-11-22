@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0A0F1E;
+  --navy-light: #1A2140;
+  --navy-mid: #151B35;
+  --silver: #8FA3C7;
+  --silver-dim: rgba(143, 163, 199, 0.4);
+  --silver-bright: #B9C7DE;
+  --copper: #E8743B;
+  --copper-dim: rgba(232, 116, 59, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy);
+  color: var(--silver);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--copper-dim);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(143, 163, 199, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(143, 163, 199, 0.4);
+}
+
+@layer utilities {
+  .text-gradient-copper {
+    background: linear-gradient(135deg, #E8743B, #EE9767);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-silver-dim {
+    border-color: rgba(143, 163, 199, 0.15);
+  }
+
+  .bg-glass {
+    background: rgba(10, 15, 30, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .bg-glass-light {
+    background: rgba(26, 33, 64, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glow-copper {
+    box-shadow: 0 0 20px rgba(232, 116, 59, 0.15), 0 0 60px rgba(232, 116, 59, 0.05);
+  }
+
+  .glow-silver {
+    box-shadow: 0 0 20px rgba(143, 163, 199, 0.1), 0 0 60px rgba(143, 163, 199, 0.03);
+  }
+}
+
+/* Investigation roadmap */
+@keyframes rm-travel {
+  0% { stroke-dashoffset: 1; }
+  100% { stroke-dashoffset: -0.06; }
+}
+.rm-travel {
+  animation: rm-travel 2.8s linear infinite;
+}
+
+@keyframes rm-pulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.03); }
+}
+.rm-pulse {
+  animation: rm-pulse 2.4s ease-in-out infinite;
+}
+
+.rm-node {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rm-travel, .rm-pulse { animation: none !important; }
+  .rm-node { transition-duration: 0ms !important; }
+}
